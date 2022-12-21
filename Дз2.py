@@ -24,7 +24,7 @@ def prepare_lines(data):
             k += 1
             if k == 2: user.append('"' + elem + '"')
             else: user.append(elem)
-        dictionary_list[a] = dict(zip(labels, user1_vals))
+        dictionary_list[a] = dict(zip(labels, user))
         a += 1
     
     count_list = ["1", "2", "3"]
