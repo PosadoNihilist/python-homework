@@ -1,3 +1,4 @@
+first_line = "name,grade\n"
 def read_data(file_name):
     file = open(file_name)
     content = file.read()
@@ -10,20 +11,13 @@ def write_data(file_name, data):
     
 def format_data(text):
     lines = text.split('\n')
-    students_dict = {}
-    full_name_list = []
+    line_list = []
     for line in lines:
-        line_list = line.split()
-        full_name = line_list[1] + " " + line_list[2].strip(":")
-        score = line_list[3]
-        students_dict.update({full_name: score})
-        full_name_list.append(full_name)
-    sorted_full_name_list = sorted(full_name_list)
-    final_output = "name,grade\n"
-    for name in sorted_full_name_list:
-        template = '{},{}\n'
-        final_output += template.format(name, students_dict.get(name))
-    return str(final_output)
+        cleaned_line = line.replace(': ', ',')
+        line_list.append(cleaned_line.split('. ')[1])
+    line_list = sorted(line_list)
+    output = first_line +'\n'.join(line_list)
+    return output
 
 text = read_data("data.txt")
 out = format_data(text)
