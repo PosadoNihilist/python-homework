@@ -13,6 +13,18 @@ AddNewMessage(200002, 100001, "hi carl")
 AddNewMessage(200002, 100002, "hi carl")
 
 class Test(unittest.TestCase):
+    def test_AddNewUser(self):
+        expected_data = 100004
+        result = AddNewUser("Steve")
+        self.assertEqual(result, expected_data)
+    def test_AddNewChat(self):
+        expected_data = 200003
+        result = AddNewChat("Third Chat", [100002, 100003])
+        self.assertEqual(result, expected_data)
+    def test_AddNewMessage(self):
+        expected_data = 300006
+        result = AddNewMessage(200003, 100002, "hi carl, this is a secret third chat without Mike")
+        self.assertEqual(result, expected_data)
     def test_ListOfUserChats(self):
         expected_data = ("[[200001, 'First Chat', [100001, 100002], '"
         + str(chat_storage.get_chat(200001).cr_time) +
